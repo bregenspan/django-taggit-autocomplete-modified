@@ -34,4 +34,6 @@ TAGGIT_AUTOCOMPLETE_TAG_MODEL = getattr(settings, 'TAGGIT_AUTOCOMPLETE_TAG_MODEL
 DEFAULT_TAGGIT_AUTOCOMPLETE_MEDIA_URL = '%staggit_autocomplete_modified/' % settings.STATIC_URL
 TAGGIT_AUTOCOMPLETE_MEDIA_URL = getattr(settings, 'TAGGIT_AUTOCOMPLETE_MEDIA_URL', DEFAULT_TAGGIT_AUTOCOMPLETE_MEDIA_URL)
 
+TAGGIT_AUTOCOMPLETE_MEDIA = getattr(settings, 'TAGGIT_AUTOCOMPLETE_MEDIA', False)
+
 # TODO: Add a setting for the autocomplete options: http://docs.jquery.com/Plugins/Autocomplete/autocomplete#url_or_dataoptions

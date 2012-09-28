@@ -36,15 +36,20 @@ from taggit_autocomplete_modified import settings
 
 class TagAutocomplete(Input):
     input_type = 'text'
-    
+
     class Media:
-        css = {
-            'all': ('%sjquery.autocomplete.css' % settings.TAGGIT_AUTOCOMPLETE_MEDIA_URL,)
-        }
-        js = (
-            '%sjquery.min.js' % settings.TAGGIT_AUTOCOMPLETE_MEDIA_URL,
-            '%sjquery.autocomplete.js' % settings.TAGGIT_AUTOCOMPLETE_MEDIA_URL,
-        )
+        custom_media = settings.TAGGIT_AUTOCOMPLETE_MEDIA
+        if custom_media:
+            css = custom_media['css']
+            js = custom_media['js']
+        else:
+            css = {
+                'all': ('%sjquery.autocomplete.css' % settings.TAGGIT_AUTOCOMPLETE_MEDIA_URL,)
+            }
+            js = (
+                '%sjquery.min.js' % settings.TAGGIT_AUTOCOMPLETE_MEDIA_URL,
+                '%sjquery.autocomplete.js' % settings.TAGGIT_AUTOCOMPLETE_MEDIA_URL,
+            )
     
     def render(self, name, value, attrs=None):
         if value is not None and not isinstance(value, basestring):
